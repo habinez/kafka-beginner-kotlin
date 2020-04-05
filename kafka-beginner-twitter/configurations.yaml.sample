@@ -1,0 +1,31 @@
+twitter:
+  key:         "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+  secret:      "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
+  token:       "11XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  tokenSecret: "0XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+kafka:
+  zookeeper:
+    host: 10.10.0.65
+    port: 2181
+
+  producer:
+    brokers: 10.10.0.65:9092
+    topic:           twitter_tweets
+    compression:     snappy
+    batchSize:       32000
+    idempotent:      true
+    retries:         1
+    acks:            all
+
+  consumer:
+    topic:           twitter_tweets
+    group:           twitter_kafka_group
+    bootstrapServer: 10.10.0.65:9092
+    maxPollRecords : 1000
+
+elasticsearch:
+  url: "https://<key>:<secret>@<endpoint>:<port>"
+  url: "https://<endpoint>:<port>" ## add the key and secret value in this case
+  key:
+  secret:
